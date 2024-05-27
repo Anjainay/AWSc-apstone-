@@ -83,9 +83,9 @@ def AddEmp():
             try:
                 dynamodb_client = boto3.client('dynamodb', region_name='us-east-1')
                 dynamodb_client.put_item(
-                 TableName='employee_image_table',
+                 TableName='awsproject',
                     Item={
-                     'empid': {
+                     'Employee_id': {
                           'N': emp_id
                       },
                       'image_url': {
@@ -131,12 +131,12 @@ def FetchData():
         output["primary_skills"] = result[3]
         output["location"] = result[4]
         print(output["emp_id"])
-        dynamodb_client = boto3.client('dynamodb', region_name=customregion)
+        dynamodb_client = boto3.client('dynamodb', region_name='us-east-1')
         try:
             response = dynamodb_client.get_item(
-                TableName='employee_image_table',
+                TableName='awsproject',
                 Key={
-                    'empid': {
+                    'Employee_id': {
                         'N': str(emp_id)
                     }
                 }
